@@ -1,4 +1,3 @@
-import fix
 import turtle
 import random
 from time import sleep
@@ -34,7 +33,7 @@ def slowmo():
 	global time
 	b = dt.now()
 
-	if (b - a).seconds > 5 and (b - a).seconds < 15 :
+	if (b - a).seconds%30 > 5 and (b - a).seconds%30 < 15 :
 		time += 0.02
 	else:
 		while time > 0.005:
@@ -48,14 +47,14 @@ while 1:
 		ball.dy -= gravity
 		ball.sety(ball.ycor() + ball.dy)
 		ball.setx(ball.xcor() + ball.dx)
-		#проверка столкновений со стенами
+		#проверка столкновений со стенами wall collision checking
 		if ball.xcor() > 300:
 			ball.dx *= -1
 			ball.da *= -1
 		if ball.xcor() < -300:
 			ball.dx *= -1
 			ball.da *= -1
-		#проверка столкновений с полом
+		#проверка столкновений с полом floor collision checking
 		if ball.ycor() < -300:
 			ball.sety(-300)
 			ball.dy *= -1
